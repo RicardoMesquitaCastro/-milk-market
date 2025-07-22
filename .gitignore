@@ -1,0 +1,69 @@
+# Arquivos temporários do sistema e editores
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+log.txt
+
+# ================================
+# Frontend (Ionic/Angular)
+# ================================
+Frontend/node_modules/
+Frontend/www/
+Frontend/.angular/
+Frontend/.angular/cache
+Frontend/.nx/
+Frontend/.nx/cache
+Frontend/.sourcemaps/
+Frontend/.versions/
+Frontend/.ionic/
+Frontend/platforms/
+Frontend/plugins/
+Frontend/dist/
+Frontend/tmp/
+Frontend/out-tsc/
+Frontend/bazel-out/
+Frontend/coverage/
+Frontend/libpeerconnection.log
+Frontend/testem.log
+Frontend/typings/
+
+# VSCode na Frontend
+Frontend/.vscode/
+
+# ================================
+# Backend (Node.js)
+# ================================
+backend/node_modules/
+backend/*.log
+backend/.env
+backend/coverage/
+backend/.vscode/
+
+# ================================
+# IDEs e Gerais
+# ================================
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-project
+*.sublime-workspace
+.history/
+
+# Visual Studio Code (padrão global)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

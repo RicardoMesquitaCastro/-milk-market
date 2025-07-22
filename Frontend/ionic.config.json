@@ -1,0 +1,7 @@
+{
+  "name": "leite-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

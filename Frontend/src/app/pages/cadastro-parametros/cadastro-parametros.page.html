@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nome App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Seção de Produtividade -->
+  <ion-text color="medium">
+    <h2 style="margin-top: 24px;">Laticínio</h2>
+  </ion-text>
+  <ion-item>
+    <ion-input [(ngModel)]="laticinio" placeholder="Laticínio Fornecedor"></ion-input>
+  </ion-item>
+
+  <!-- Subtítulo de Qualidade do Leite -->
+  <ion-text color="medium">
+    <h2 style="margin-top: 24px;">Quantidade e Qualidade do leite</h2>
+  </ion-text>
+
+  <ion-item>
+    <ion-input [(ngModel)]="mesReferencia" placeholder="Mês Referência" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="producaoLitros" placeholder="Produção Diária (Litros)" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="precoLitro" placeholder="Preço por litro" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="ccs" type="number" placeholder="CCS"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="cbt" type="number" placeholder="CBT"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="gordura" type="number" placeholder="Gordura"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="proteina" type="number" placeholder="Proteína"></ion-input>
+  </ion-item>
+
+  <!-- Botão -->
+  <ion-button expand="full" (click)="cadastrarParametros()">Salvar</ion-button>
+  <p style="color:red">{{ erro }}</p>
+
+</ion-content>
