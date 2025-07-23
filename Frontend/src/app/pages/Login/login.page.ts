@@ -5,12 +5,12 @@ import { IonicModule } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
+  selector: 'app-login',
+  templateUrl: './login.page.html',
   imports: [IonicModule, FormsModule, RouterModule], // IMPORTANTE
-  styleUrls: ['./home.page.scss'],
+  styleUrls: ['./login.page.scss'],
 })
-export class HomePage {
+export class LoginPage {
   usuario = '';
   senha = '';
   erro = '';
@@ -27,6 +27,6 @@ export class HomePage {
   }
 
   irParaCadastro() {
-    this.router.navigate(['/cadastro-usuario']);
+    this.router.navigate(['/cadastro-conta']);
   }
 }

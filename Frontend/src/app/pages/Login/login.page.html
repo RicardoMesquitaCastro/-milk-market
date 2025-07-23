@@ -5,10 +5,15 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Login</ion-card-title>
+ <ion-card-header>
+        <img src="assets/icon/logo.png"/>
     </ion-card-header>
+  <ion-card>
+
+
+  <ion-card-header>
+  <ion-card-title style="text-align: center;">Login</ion-card-title>
+</ion-card-header>
     <ion-card-content>
       <form (ngSubmit)="login()">
         <ion-item>
@@ -22,7 +27,7 @@
         </ion-item>
 
         <div class="ion-margin-top">
-          <ion-button expand="block" type="submit">Entrar</ion-button>
+          <ion-button color="primary"  expand="block" type="submit">Entrar</ion-button>
         </div>
       </form>
 
