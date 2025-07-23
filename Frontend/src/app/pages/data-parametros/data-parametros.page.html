@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de Parâmetros</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="agrupamentoSelecionado" value="nenhum">
+      <ion-segment-button value="nenhum">Todos</ion-segment-button>
+      <ion-segment-button value="laticinio">Por Laticínio</ion-segment-button>
+      <ion-segment-button value="mes">Por Mês</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Lista agrupada -->
+
+  <!-- Agrupamento por Laticínio com faixas -->
+  <ng-container *ngIf="agrupamentoSelecionado === 'laticinio'">
+    <ion-card *ngFor="let grupo of dadosPorLaticinioFaixas; trackBy: trackByLaticinio">
+      <ion-card-header>
+        <ion-card-title>{{ grupo.laticinio }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let faixa of grupo.faixas; trackBy: trackByFaixa">
+          <ion-label>
+            Litros: {{ faixa.faixa }} - Média Preço: R$ {{ faixa.mediaPreco | number:'1.2-2' }}
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- Agrupamento por Mês (igual seu exemplo) -->
+  <ng-container *ngIf="agrupamentoSelecionado === 'mes'">
+    <ion-card *ngFor="let grupo of dadosPorMes; trackBy: trackByLaticinio">
+      <ion-card-header>
+        <ion-card-title>Mês {{ grupo.mes }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let item of grupo.items; trackBy: trackByFaixa">
+          <ion-label>{{ item.laticinio }} - {{ item.producaoLitros }}L</ion-label>
+          <ion-note slot="end">R$ {{ item.precoLitro }}</ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- Agrupamento padrão (todos) -->
+  <ng-container *ngIf="agrupamentoSelecionado === 'nenhum'">
+    <ion-card *ngFor="let dados of dadosList; trackBy: trackByFaixa">
+      <ion-card-header>
+        <ion-card-title>{{ dados.laticinio }} - Mês {{ dados.mesReferencia }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Litros</ion-label>
+          <ion-note slot="end">{{ dados.producaoLitros }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Preço/L</ion-label>
+          <ion-note slot="end">R$ {{ dados.precoLitro }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>CCS</ion-label>
+          <ion-note slot="end">{{ dados.ccs }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>CBT</ion-label>
+          <ion-note slot="end">{{ dados.cbt }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gordura</ion-label>
+          <ion-note slot="end">{{ dados.gordura }}%</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Proteína</ion-label>
+          <ion-note slot="end">{{ dados.proteina }}%</ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>

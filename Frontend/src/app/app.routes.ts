@@ -21,6 +21,10 @@ export const routes: Routes = [
     path: 'cadastro-parametros',
     loadComponent: () => import('./pages/cadastro-parametros/cadastro-parametros.page').then((m) => m.CadastroParametrosPage),
   },
+   {
+    path: 'data-parametros',
+    loadComponent: () => import('./pages/data-parametros/data-parametros.page').then((m) => m.DataParametrosPage),
+  },
   {
     path: '',
     redirectTo: 'home',
