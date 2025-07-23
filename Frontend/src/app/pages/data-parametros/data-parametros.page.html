@@ -50,11 +50,11 @@
   <!-- Agrupamento por Laticínio com faixas -->
   <ng-container *ngIf="agrupamentoSelecionado === 'laticinio'">
      <ion-text class="ion-padding" color="medium">
-    <h2 style="margin: 16px 0 8px;">Média de Preço</h2>
+    <h2 style="margin: 16px 0 8px;">Média de Preço por Faixas </h2>
   </ion-text>
     <ion-card *ngFor="let grupo of dadosPorLaticinioFaixas; trackBy: trackByLaticinio">
       <ion-card-header>
-        <ion-card-title>{{ grupo.laticinio }}</ion-card-title>
+        <ion-card-title>Laticínio: {{ grupo.laticinio }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-item *ngFor="let faixa of grupo.faixas; trackBy: trackByFaixa">
@@ -77,7 +77,7 @@
   <!-- Agrupamento por Mês (igual seu exemplo) -->
 <ng-container *ngIf="agrupamentoSelecionado === 'mes'">
     <ion-text class="ion-padding" color="medium">
-    <h2 style="margin: 16px 0 8px;">Média de Preço</h2>
+    <h2 style="margin: 16px 0 8px;">Média de Preço por Mês </h2>
   </ion-text>
   <ion-card *ngFor="let grupo of dadosPorMes; trackBy: trackByLaticinio">
     <ion-card-header>

@@ -54,9 +54,7 @@ export class HomePage implements AfterViewInit {
           responsive: true,
           plugins: {
             legend: {
-              labels: {
-                color: '#333',
-              },
+               display: false  // <- Isso esconde a legenda com a barrinha
             },
           },
           scales: {
