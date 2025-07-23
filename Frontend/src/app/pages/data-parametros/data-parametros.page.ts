@@ -12,7 +12,8 @@ Chart.register(...registerables);
   templateUrl: './data-parametros.page.html',
 })
 export class DataParametrosPage implements AfterViewInit {
-  agrupamentoSelecionado: string = 'nenhum';
+  agrupamentoSelecionado: string = 'laticinio';
+  regiaoSelecionada: string | null = null;
 
   laticinio: string = '';
   mesReferencia: number | null = null;
@@ -25,32 +26,32 @@ export class DataParametrosPage implements AfterViewInit {
 
   dadosList = [
   // JL
-  { laticinio: 'jl', mes: 'Mai', mesReferencia: 5, producaoLitros: 90, precoLitro: 4.8, ccs: 6, cbt: 4, gordura: 3.9, proteina: 3.3 },
-  { laticinio: 'jl', mes: 'Jun', mesReferencia: 6, producaoLitros: 160, precoLitro: 4.9, ccs: 5, cbt: 5, gordura: 4.1, proteina: 3.4 },
-  { laticinio: 'jl', mes: 'Jul', mesReferencia: 7, producaoLitros: 220, precoLitro: 5.0, ccs: 4, cbt: 4, gordura: 4.0, proteina: 3.6 },
-  { laticinio: 'jl', mes: 'Ago', mesReferencia: 8, producaoLitros: 300, precoLitro: 4.7, ccs: 6, cbt: 6, gordura: 3.8, proteina: 3.2 },
-  { laticinio: 'jl', mes: 'Set', mesReferencia: 9, producaoLitros: 410, precoLitro: 4.9, ccs: 5, cbt: 5, gordura: 4.2, proteina: 3.7 },
+  { laticinio: 'JL', regiao: 'Buritizinho', mesReferencia: 5, producaoLitros: 90, precoLitro: 4.8, ccs: 6, cbt: 4, gordura: 3.9, proteina: 3.3 },
+  { laticinio: 'JL', regiao: 'Taquaral', mesReferencia: 6, producaoLitros: 160, precoLitro: 4.9, ccs: 5, cbt: 5, gordura: 4.1, proteina: 3.4 },
+  { laticinio: 'JL', regiao: 'Apamac', mesReferencia: 7, producaoLitros: 220, precoLitro: 5.0, ccs: 4, cbt: 4, gordura: 4.0, proteina: 3.6 },
+  { laticinio: 'JL', regiao: 'Apamac', mesReferencia: 8, producaoLitros: 300, precoLitro: 4.7, ccs: 6, cbt: 6, gordura: 3.8, proteina: 3.2 },
+  { laticinio: 'JL', regiao: 'Firmeza', mesReferencia: 9, producaoLitros: 410, precoLitro: 4.9, ccs: 5, cbt: 5, gordura: 4.2, proteina: 3.7 },
 
   // Mega Leite
-  { laticinio: 'mega leite', mes: 'Mai', mesReferencia: 5, producaoLitros: 120, precoLitro: 5.1, ccs: 3, cbt: 4, gordura: 4.0, proteina: 3.5 },
-  { laticinio: 'mega leite', mes: 'Jun', mesReferencia: 6, producaoLitros: 250, precoLitro: 5.3, ccs: 2, cbt: 3, gordura: 4.3, proteina: 3.6 },
-  { laticinio: 'mega leite', mes: 'Jul', mesReferencia: 7, producaoLitros: 320, precoLitro: 5.0, ccs: 4, cbt: 3, gordura: 4.1, proteina: 3.7 },
-  { laticinio: 'mega leite', mes: 'Ago', mesReferencia: 8, producaoLitros: 410, precoLitro: 5.2, ccs: 3, cbt: 3, gordura: 4.4, proteina: 3.8 },
-  { laticinio: 'mega leite', mes: 'Set', mesReferencia: 9, producaoLitros: 500, precoLitro: 5.4, ccs: 2, cbt: 2, gordura: 4.6, proteina: 3.9 },
+  { laticinio: 'Piracanjuba', regiao: 'Taquaral', mesReferencia: 5, producaoLitros: 120, precoLitro: 5.1, ccs: 3, cbt: 4, gordura: 4.0, proteina: 3.5 },
+  { laticinio: 'Piracanjuba', regiao: 'Buritizinho', mesReferencia: 6, producaoLitros: 250, precoLitro: 5.3, ccs: 2, cbt: 3, gordura: 4.3, proteina: 3.6 },
+  { laticinio: 'Piracanjuba', regiao: 'Apamac', mesReferencia: 7, producaoLitros: 320, precoLitro: 5.0, ccs: 4, cbt: 3, gordura: 4.1, proteina: 3.7 },
+  { laticinio: 'Piracanjuba', regiao: 'Firmeza', mesReferencia: 8, producaoLitros: 410, precoLitro: 5.2, ccs: 3, cbt: 3, gordura: 4.4, proteina: 3.8 },
+  { laticinio: 'Piracanjuba', regiao: 'Firmeza', mesReferencia: 9, producaoLitros: 500, precoLitro: 5.4, ccs: 2, cbt: 2, gordura: 4.6, proteina: 3.9 },
 
   // Nova Fazenda
-  { laticinio: 'nova fazenda', mes: 'Mai', mesReferencia: 5, producaoLitros: 80, precoLitro: 4.5, ccs: 5, cbt: 5, gordura: 3.7, proteina: 3.1 },
-  { laticinio: 'nova fazenda', mes: 'Jun', mesReferencia: 6, producaoLitros: 140, precoLitro: 4.6, ccs: 6, cbt: 4, gordura: 3.8, proteina: 3.2 },
-  { laticinio: 'nova fazenda', mes: 'Jul', mesReferencia: 7, producaoLitros: 210, precoLitro: 4.8, ccs: 5, cbt: 5, gordura: 4.0, proteina: 3.4 },
-  { laticinio: 'nova fazenda', mes: 'Ago', mesReferencia: 8, producaoLitros: 290, precoLitro: 4.9, ccs: 6, cbt: 6, gordura: 4.1, proteina: 3.5 },
-  { laticinio: 'nova fazenda', mes: 'Set', mesReferencia: 9, producaoLitros: 380, precoLitro: 5.0, ccs: 5, cbt: 5, gordura: 4.3, proteina: 3.7 },
+  { laticinio: 'CCPR', regiao: 'Taquaral', mesReferencia: 5, producaoLitros: 80, precoLitro: 4.5, ccs: 5, cbt: 5, gordura: 3.7, proteina: 3.1 },
+  { laticinio: 'CCPR', regiao: 'Buritizinho', mesReferencia: 6, producaoLitros: 140, precoLitro: 4.6, ccs: 6, cbt: 4, gordura: 3.8, proteina: 3.2 },
+  { laticinio: 'CCPR', regiao: 'Firmeza', mesReferencia: 7, producaoLitros: 210, precoLitro: 4.8, ccs: 5, cbt: 5, gordura: 4.0, proteina: 3.4 },
+  { laticinio: 'CCPR', regiao: 'Buritizinho', mesReferencia: 8, producaoLitros: 290, precoLitro: 4.9, ccs: 6, cbt: 6, gordura: 4.1, proteina: 3.5 },
+  { laticinio: 'CCPR', regiao: 'Apamac', mesReferencia: 9, producaoLitros: 380, precoLitro: 5.0, ccs: 5, cbt: 5, gordura: 4.3, proteina: 3.7 },
 
   // Leite Bom
-  { laticinio: 'leite bom', mes: 'Mai', mesReferencia: 5, producaoLitros: 150, precoLitro: 5.5, ccs: 3, cbt: 3, gordura: 4.4, proteina: 3.8 },
-  { laticinio: 'leite bom', mes: 'Jun', mesReferencia: 6, producaoLitros: 270, precoLitro: 5.6, ccs: 4, cbt: 3, gordura: 4.5, proteina: 3.9 },
-  { laticinio: 'leite bom', mes: 'Jul', mesReferencia: 7, producaoLitros: 350, precoLitro: 5.7, ccs: 3, cbt: 2, gordura: 4.6, proteina: 4.0 },
-  { laticinio: 'leite bom', mes: 'Ago', mesReferencia: 8, producaoLitros: 430, precoLitro: 5.8, ccs: 2, cbt: 3, gordura: 4.7, proteina: 4.1 },
-  { laticinio: 'leite bom', mes: 'Set', mesReferencia: 9, producaoLitros: 520, precoLitro: 5.9, ccs: 2, cbt: 2, gordura: 4.8, proteina: 4.2 },
+  { laticinio: 'ITALAC', regiao: 'Taquaral', mesReferencia: 5, producaoLitros: 150, precoLitro: 5.5, ccs: 3, cbt: 3, gordura: 4.4, proteina: 3.8 },
+  { laticinio: 'ITALAC', regiao: 'Taquaral', mesReferencia: 6, producaoLitros: 270, precoLitro: 5.6, ccs: 4, cbt: 3, gordura: 4.5, proteina: 3.9 },
+  { laticinio: 'ITALAC', regiao: 'Buritizinho', mesReferencia: 7, producaoLitros: 350, precoLitro: 5.7, ccs: 3, cbt: 2, gordura: 4.6, proteina: 4.0 },
+  { laticinio: 'ITALAC', regiao: 'Buritizinho', mesReferencia: 8, producaoLitros: 430, precoLitro: 5.8, ccs: 2, cbt: 3, gordura: 4.7, proteina: 4.1 },
+  { laticinio: 'ITALAC', regiao: 'Apamac', mesReferencia: 9, producaoLitros: 520, precoLitro: 5.9, ccs: 2, cbt: 2, gordura: 4.8, proteina: 4.2 },
 ];
 
   ngAfterViewInit() {
@@ -59,10 +60,10 @@ export class DataParametrosPage implements AfterViewInit {
 
 criarGrafico() {
   const cores = [
-    'rgba(255, 99, 132, 0.7)',
-    'rgba(54, 162, 235, 0.7)',
-    'rgba(255, 206, 86, 0.7)',
-    'rgba(75, 192, 192, 0.7)',
+    '#FF7400',
+    '#E00809',
+    '#0B5A68',
+    '#0078BD',
     'rgba(153, 102, 255, 0.7)',
     'rgba(255, 159, 64, 0.7)',
   ];
@@ -192,18 +193,79 @@ criarGrafico() {
   }
 
   // Agrupamento por mês (exemplo seu)
-  get dadosPorMes() {
-    const grupos: Record<number, any[]> = {};
-    for (const item of this.dadosList) {
-      if (!grupos[item.mesReferencia]) grupos[item.mesReferencia] = [];
-      grupos[item.mesReferencia].push(item);
+ get dadosPorMes() {
+  const grupos: Record<number, any[]> = {};
+
+  for (const item of this.dadosList) {
+    if (!grupos[item.mesReferencia]) {
+      grupos[item.mesReferencia] = [];
+    }
+    grupos[item.mesReferencia].push(item);
+  }
+
+  return Object.entries(grupos).map(([mesReferencia, items]) => {
+    return {
+      mes: this.obterNomeMes(Number(mesReferencia)),
+      items: items.map(item => ({
+        ...item,
+        mediaPrecoDoLaticinio: this.mediaPrecoPorLaticinio[item.laticinio]
+      }))
+    };
+  });
+}
+
+get mediaPrecoPorLaticinio(): Record<string, number> {
+  const totalPorLaticinio: Record<string, { soma: number, count: number }> = {};
+
+  for (const item of this.dadosList) {
+    const nome = item.laticinio;
+    if (!totalPorLaticinio[nome]) {
+      totalPorLaticinio[nome] = { soma: 0, count: 0 };
     }
 
-    return Object.keys(grupos).map(mes => ({
-      mes,
-      items: grupos[+mes],
-    }));
+    totalPorLaticinio[nome].soma += item.precoLitro;
+    totalPorLaticinio[nome].count += 1;
   }
+
+  const medias: Record<string, number> = {};
+  for (const laticinio in totalPorLaticinio) {
+    const { soma, count } = totalPorLaticinio[laticinio];
+    medias[laticinio] = soma / count;
+  }
+
+  return medias;
+}
+
+obterNomeMes(mes: number): string {
+ const nomes = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+];
+  return nomes[mes - 1] || 'Desconhecido';
+}
+
+get regioesDisponiveis(): string[] {
+  // Extrai todas regiões únicas da lista
+  return Array.from(new Set(this.dadosList.map(d => d.regiao))).sort();
+}
+
+// Função para retornar dados filtrados pela região, ou todos se null
+get dadosFiltradosPorRegiao() {
+  if (!this.regiaoSelecionada) {
+    return this.dadosList;
+  }
+  return this.dadosList.filter(item => item.regiao === this.regiaoSelecionada);
+}
 
   // TrackBy para otimizar ngFor
   trackByLaticinio(index: number, item: any) {
