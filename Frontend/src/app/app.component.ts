@@ -1,12 +1,11 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { IonApp, IonicModule, IonRouterOutlet } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, HttpClientModule],
+  standalone: true,
+  imports: [IonicModule, RouterModule ],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  constructor() {}
-}
+export class AppComponent {}
