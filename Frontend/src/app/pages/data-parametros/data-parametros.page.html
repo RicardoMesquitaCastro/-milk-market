@@ -11,6 +11,7 @@
       <!-- <ion-segment-button value="nenhum">Todos</ion-segment-button> -->
       <ion-segment-button value="laticinio">Por Laticínio</ion-segment-button>
       <ion-segment-button value="mes">Por Mês</ion-segment-button>
+       <ion-segment-button value="regiao">Por Região</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
@@ -18,7 +19,34 @@
 <ion-content class="ion-padding">
 
   <!-- Lista agrupada -->
+  <ng-container *ngIf="agrupamentoSelecionado === 'regiao'">
+  <ion-text class="ion-padding" color="medium">
+    <h2 style="margin: 16px 0 8px;">Média de Preço por Região</h2>
+  </ion-text>
 
+  <!-- Cards com médias por região e laticínios -->
+  <ion-card *ngFor="let grupo of dadosPorRegiao; trackBy: trackByLaticinio">
+    <ion-card-header>
+      <ion-card-title>
+        {{ grupo.regiao }} — Média Geral: R$ {{ grupo.mediaPreco | number:'1.2-2' }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let lat of grupo.laticinios; trackBy: trackByFaixa">
+        <ion-label>{{ lat.laticinio }}</ion-label>
+        <ion-note slot="end">R$ {{ lat.mediaPreco | number:'1.2-2' }}</ion-note>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+    <ion-card>
+    <ion-card-header>
+      <ion-card-title>Gráfico Média de Preço por Região</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #graficoRegiao style="width: 100%; max-width: 600px; height: 300px;"></canvas>
+    </ion-card-content>
+  </ion-card>
+  </ng-container>
   <!-- Agrupamento por Laticínio com faixas -->
   <ng-container *ngIf="agrupamentoSelecionado === 'laticinio'">
      <ion-text class="ion-padding" color="medium">
@@ -36,11 +64,21 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
+     <ion-card>
+    <ion-card-header>
+      <ion-card-title>COMPARATIVO INTERVALO E PREÇOS</ion-card-title>
+    </ion-card-header>
+     <ion-card-content>
+<canvas id="graficoLitrosPreco" style="width: 100%; max-width: 600px; height: 300px;"></canvas>
+     </ion-card-content>
+    </ion-card>
   </ng-container>
 
   <!-- Agrupamento por Mês (igual seu exemplo) -->
 <ng-container *ngIf="agrupamentoSelecionado === 'mes'">
-
+    <ion-text class="ion-padding" color="medium">
+    <h2 style="margin: 16px 0 8px;">Média de Preço</h2>
+  </ion-text>
   <ion-card *ngFor="let grupo of dadosPorMes; trackBy: trackByLaticinio">
     <ion-card-header>
       <ion-card-title>
@@ -96,14 +134,5 @@
       </ion-card-content>
     </ion-card>
   </ng-container> -->
- <ion-card>
-    <ion-card-header>
-      <ion-card-title>COMPARATIVO INTERVALO E PREÇOS</ion-card-title>
-    </ion-card-header>
-     <ion-card-content>
-<canvas id="graficoLitrosPreco" style="width: 100%; max-width: 600px; height: 300px;"></canvas>
-     </ion-card-content>
-    </ion-card>
-
 
 </ion-content>
