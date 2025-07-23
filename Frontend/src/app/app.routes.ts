@@ -5,6 +5,10 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./pages/Login/login.page').then((m) => m.LoginPage),
   },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/homepage').then((m) => m.HomePage),
+  },
    {
     path: 'cadastro-conta',
     loadComponent: () => import('./pages/cadastro-conta/cadastro-conta.page').then((m) => m.CadastroContaPage),

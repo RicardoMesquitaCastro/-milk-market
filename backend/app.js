@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const registroRoutes = require('./routes/registro.routes');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -10,6 +11,22 @@ app.use(bodyParser.json());
 
 // Prefixo /api
 app.use('/api', registroRoutes);
+
+const SECRET_KEY = 'secreto123';
+
+app.post('/auth/register', (req, res) => {
+  const { nome, email, senha } = req.body;
+  // salvar no banco...
+  const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: '1h' });
+  res.json({ token });
+});
+
+app.post('/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  // validar no banco...
+  const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: '1h' });
+  res.json({ token });
+});
 
 // Endpoint direto para registros (mock)
 const registros = [];

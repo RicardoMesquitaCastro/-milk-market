@@ -19,8 +19,8 @@ export class CadastroContaPage {
   password = '';
   erro = '';
 
-  constructor(private auth: AuthService, private router: Router) {}
-   //constructor( private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) { }
+  //constructor( private router: Router) {}
 
   cadastrarConta() {
     if (!this.name || !this.email || !this.password) {
@@ -40,10 +40,12 @@ export class CadastroContaPage {
         this.auth.saveToken(res.token); // apenas se seu serviço tiver isso
         this.router.navigate(['/cadastro-propriedade']);
       },
-      error: () => {this.erro = 'Erro ao cadastrar'
+      error: () => {
+        this.erro = 'Erro ao cadastrar'
       },
     });
-
     this.erro = '';
   }
+
+
 }
